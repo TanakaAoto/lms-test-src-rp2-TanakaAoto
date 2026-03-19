@@ -41,8 +41,11 @@ public class Case02 {
 		// 指定のURLの画面を開く
 		webDriver.get("http://localhost:8080/lms");
 
-		//Titleの取得とアサーション
+		//Title確認
 		assertEquals("ログイン | LMS", webDriver.getTitle());
+		// エビデンス取得
+		getEvidence(new Object() {
+		});
 	}
 
 	@Test
