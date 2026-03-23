@@ -40,7 +40,6 @@ public class Case02 {
 	void test01() {
 		// 指定のURLの画面を開く
 		webDriver.get("http://localhost:8080/lms");
-
 		//Title確認
 		assertEquals("ログイン | LMS", webDriver.getTitle());
 		// エビデンス取得
@@ -56,6 +55,7 @@ public class Case02 {
 		WebElement loginId = webDriver.findElement(By.id("loginId"));
 		WebElement password = webDriver.findElement(By.id("password"));
 		WebElement submit = webDriver.findElement(By.className("btn"));
+		// フォーム入力
 		loginId.clear();
 		loginId.sendKeys("abcd1234");
 		password.clear();
