@@ -3,7 +3,6 @@ package jp.co.sss.lms.ct.f02_faq;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * 結合テスト よくある質問機能
@@ -68,8 +65,7 @@ public class Case04 {
 		password.sendKeys("StudentAA00");
 		submit.click();
 		// 画面の遷移を待機
-		final WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(60));
-		wait.until(ExpectedConditions.titleIs("コース詳細 | LMS"));
+		visibilityTimeout(By.id("wrap"), 60);
 		// Title確認
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
 		// エビデンス取得
@@ -84,12 +80,11 @@ public class Case04 {
 		// 「機能」ドロップダウンの展開
 		webDriver.findElement(By.linkText("機能")).click();
 		// リストの展開を待機
-		final WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(60));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ヘルプ")));
+		visibilityTimeout(By.linkText("ヘルプ"), 60);
 		// 「ヘルプ」リンク押下
 		webDriver.findElement(By.linkText("ヘルプ")).click();
 		// 画面の遷移を待機
-		wait.until(ExpectedConditions.titleIs("ヘルプ | LMS"));
+		visibilityTimeout(By.id("wrap"), 60);
 		// Title確認
 		assertEquals("ヘルプ | LMS", webDriver.getTitle());
 		// エビデンス取得
@@ -107,8 +102,7 @@ public class Case04 {
 		List<String> tabList = new ArrayList<>(webDriver.getWindowHandles());
 		webDriver.switchTo().window(tabList.get(tabList.size() - 1));
 		// 画面の遷移を待機
-		final WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(60));
-		wait.until(ExpectedConditions.titleIs("よくある質問 | LMS"));
+		visibilityTimeout(By.id("wrap"), 60);
 		// Title確認
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
 		// エビデンス取得
